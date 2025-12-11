@@ -14,6 +14,23 @@ def partially_charged_battery():
 
 def describe_battery():
 
+    def init_creates_battery(partially_charged_battery):
+        assert isinstance(partially_charged_battery, Battery)
+
+    def getCapacity_returns_the_capacity(partially_charged_battery):
+        assert partially_charged_battery.getCapacity() is 100
+
+    def getCharge_returns_the_Charge(partially_charged_battery):
+        assert partially_charged_battery.getCharge() is 70
+
+    def recharge_changes_charge(partially_charged_battery):
+        partially_charged_battery.recharge(20)
+        assert partially_charged_battery.mCharge is 90
+
+    def recharge_doesnt_exceed_100(partially_charged_battery):
+        partially_charged_battery.recharge(40)
+        assert partially_charged_battery.mCharge is 100
+
     def it_calls_monitor_on_recharge(partially_charged_battery):
         # setup
         mock_monitor = Mock()
